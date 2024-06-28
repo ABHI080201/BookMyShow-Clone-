@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+
+// HOC
+import DefaultHOC from "./HOC/default.hoc";
+import MovieHOC from "./HOC/Movie.hoc";
+
+// COMPONENT
+import Temp from "./components/temp";
+import Navbar from "./components/Navbar/navbar";
+import HeroCarausal from "./components/HeroCarousal/herocarausal";
+import Homepage from "./pages/home.page";
+import Movie from "./pages/Movie";
+const WrappedTemp = DefaultHOC(Temp);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      {/* <Route path="/" element={<WrappedTemp />} /> */}
+      <Route path="/" element={<Homepage />} />
+      <Route path="/movie/:id" element={<Movie />} />
+    </Routes>
   );
 }
 
